@@ -67,7 +67,11 @@ def inspect(article):
     return result
 
 
-articles = [a for p in data['programs'] for a in p['articles']]
+# Placeholder dùng chung không được ghi đè; chỉ tải ảnh đã khai báo file riêng.
+# URL trùng vẫn giữ trên website, nhưng không cần tải cùng một ảnh nhiều lần.
+articles = list({(a['url'], a['thumbnail']): a
+                 for p in data['programs'] for a in p['articles']
+                 if a.get('thumbnail') and not a['thumbnail'].startswith('assets/images/placeholders/')}.values())
 previous = {}
 cache_path = ROOT / '.qa' / 'link-metadata.json'
 if '--retry' in sys.argv and cache_path.exists():

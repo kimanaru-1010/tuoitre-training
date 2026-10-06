@@ -39,7 +39,18 @@ node scripts/build.mjs
 node scripts/check.mjs
 ```
 
-`build.mjs` dùng một bộ template chung để tạo đầy đủ HTML cho từng trang. Nội dung, điều hướng và metadata có sẵn ngay trong HTML, kể cả khi tắt JavaScript. Không cần chạy build trên GitHub: hãy push cả các tệp HTML đã xuất. `check.mjs` kiểm tra các trang, đủ 18 nội dung, nhãn video, link tab mới và các đường dẫn nội bộ/ảnh dưới subpath; không gọi mạng.
+`build.mjs` dùng một bộ template chung để tạo đầy đủ HTML cho từng trang. Nội dung, điều hướng và metadata có sẵn ngay trong HTML, kể cả khi tắt JavaScript. Không cần chạy build trên GitHub: hãy push cả các tệp HTML đã xuất. `check.mjs` kiểm tra các trang, đủ 61 mục nội dung, nhãn video, link tab mới và các đường dẫn nội bộ/ảnh dưới subpath; không gọi mạng. Các trường tùy chọn `topicsHeading` và `topics` chứa nội dung trọng tâm, hiển thị trong phần mô tả chương trình.
+
+Danh sách hiện tại gồm:
+
+| Chương trình | Số mục | Bài viết | Video |
+| --- | ---: | ---: | ---: |
+| Đối tượng đào tạo sinh viên các trường đại học, cao đẳng | 37 | 36 | 1 |
+| Làm báo cùng Tuổi Trẻ | 13 | 8 | 5 |
+| Truyền thông trong tuyển sinh và xây dựng thương hiệu | 6 | 5 | 1 |
+| Nâng cao năng lực truyền thông trong thời đại AI | 5 | 4 | 1 |
+
+Tổng cộng **61 mục**, tương ứng **59 URL khác nhau**. Nhóm sinh viên giữ nguyên hai cặp URL trùng theo danh sách nguồn: mục **2 và 3** (Nguyễn Tất Thành), mục **5 và 33** (Hoa Sen). Không tự loại trùng hoặc đổi thứ tự.
 
 `site.url` (có dấu `/` cuối) và `site.repository` đã được cấu hình cho tài khoản GitHub **`kimanaru-1010`**:
 
@@ -54,8 +65,8 @@ Khi `site.url` còn trống, nội dung và điều hướng vẫn hoạt độn
 
 ## Ảnh và nhận diện
 
-- 18 thumbnail lấy từ metadata Open Graph của đúng 18 URL Tuổi Trẻ Online trong yêu cầu, tải về `assets/images/` và tối ưu thành JPEG. Website không fetch metadata khi người đọc truy cập; không có CORS hay backend lấy ảnh.
-- Tiêu đề và liên kết giữ nguyên nội dung người dùng cung cấp. Ảnh dùng cho card dẫn tới bài nguồn; nguồn bài viết/video hiển thị ở footer.
+- 18 thumbnail đã có được giữ nguyên và gắn với đúng URL bài nguồn, kể cả các mục trùng. 41 URL mới dùng chung `assets/images/placeholders/editorial.svg`. Website không fetch metadata khi người đọc truy cập; không có CORS hay backend lấy ảnh.
+- Tiêu đề lấy từ metadata bài viết/video trên Tuổi Trẻ Online lúc biên soạn; 61 mục giữ nguyên URL và thứ tự người dùng cung cấp. Ảnh dùng cho card dẫn tới bài nguồn; nguồn bài viết/video hiển thị ở footer.
 - `site.heroImage` và `program.image` chọn ảnh đã có trong dự án. Có thể thay bằng ảnh được Trung tâm cung cấp.
 - `assets/images/social-preview.png` là ảnh chia sẻ tạm 1200 × 630 bằng chữ và màu thương hiệu. Thay file này hoặc `site.socialImage` khi có ảnh chính thức. Đây là mẫu nhận diện chữ, chưa phải bộ logo chính thức.
 - Ảnh thiếu khi build được thay bằng `assets/images/placeholders/editorial.svg`. Khi ảnh lỗi lúc đọc, JavaScript hiển thị placeholder tại chỗ, giữ nguyên card và đường dẫn.
@@ -66,6 +77,8 @@ Tùy chọn lấy lại thumbnail khi biên soạn (cần Python 3.9+, Node.js v
 ```sh
 python scripts/fetch-thumbnails.py
 ```
+
+Script bỏ qua placeholder dùng chung và chỉ tải mỗi cặp URL/file ảnh một lần. Muốn bổ sung ảnh thật cho bài mới, trước tiên đặt `thumbnail` thành một đường dẫn riêng trong `assets/images/` (ví dụ `assets/images/sinh-vien-06.jpg`), rồi chạy script và build lại.
 
 Nếu một ảnh bị hết thời gian chờ: `python scripts/fetch-thumbnails.py --retry`. Trên Windows, nén ảnh và tạo lại ảnh chia sẻ tạm bằng `powershell -ExecutionPolicy Bypass -File scripts/prepare-images.ps1`. Trên hệ điều hành khác, có thể cài Pillow để script Python tự nén các thumbnail hoặc tối ưu ảnh thủ công. Sau đó chạy build.
 
@@ -85,16 +98,16 @@ Nếu một ảnh bị hết thời gian chờ: `python scripts/fetch-thumbnails
 Các đường dẫn chính thức dùng tài khoản **`kimanaru-1010`** và repository **`tuoitre-training`**. Chỉ tạo và in QR sau khi 4 URL đã hoạt động:
 
 ```text
-Sinh viên:
+Đối tượng đào tạo sinh viên các trường đại học, cao đẳng:
 https://kimanaru-1010.github.io/tuoitre-training/sinh-vien/
 
 Làm báo cùng Tuổi Trẻ:
 https://kimanaru-1010.github.io/tuoitre-training/lam-bao-cung-tuoi-tre/
 
-Truyền thông tuyển sinh:
+Truyền thông trong tuyển sinh và xây dựng thương hiệu:
 https://kimanaru-1010.github.io/tuoitre-training/truyen-thong-tuyen-sinh/
 
-Truyền thông AI:
+Nâng cao năng lực truyền thông trong thời đại AI:
 https://kimanaru-1010.github.io/tuoitre-training/truyen-thong-ai/
 ```
 

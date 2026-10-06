@@ -90,9 +90,9 @@ function articleCard(article, program, index) {
 
 function landing(program, index) {
   return `<main id="noi-dung" class="container landing-main">
-    <nav class="breadcrumb" aria-label="Đường dẫn"><ol><li><a href="../">Trang chủ</a></li><li aria-current="page">${escape(program.nav)}</li></ol></nav>
+    <nav class="breadcrumb" aria-label="Đường dẫn"><ol><li><a href="../">Trang chủ</a></li><li aria-current="page">${escape(program.title)}</li></ol></nav>
     <aside class="qr-note">${qrIcon}<div><strong>Quét QR từ brochure Trung tâm Đào tạo Báo Tuổi Trẻ</strong><p>Chọn bài viết hoặc video bạn muốn xem.</p></div></aside>
-    <section class="landing-intro" aria-labelledby="landing-title"><div><p class="eyebrow">CHƯƠNG TRÌNH ${number(index)} <span class="eyebrow-separator">/</span> ${escape(program.category)}</p><h1 id="landing-title">${escape(program.title)}</h1><p class="landing-description">${escape(program.description)}</p></div><span class="landing-index" aria-hidden="true">${number(index)}</span></section>
+    <section class="landing-intro" aria-labelledby="landing-title"><div><p class="eyebrow">CHƯƠNG TRÌNH ${number(index)} <span class="eyebrow-separator">/</span> ${escape(program.category)}</p><h1 id="landing-title">${escape(program.title)}</h1><p class="landing-description">${escape(program.description)}</p>${program.topics?.length ? `<div class="landing-description"><p>${escape(program.topicsHeading)}</p><ul>${program.topics.map((topic) => `<li>${escape(topic)}</li>`).join('')}</ul></div>` : ''}</div><span class="landing-index" aria-hidden="true">${number(index)}</span></section>
     <section class="article-section" aria-labelledby="articles-title"><div class="article-section-heading"><h2 id="articles-title">Câu chuyện từ thực tiễn</h2><span class="resource-count">${program.articles.length} bài viết & video</span></div><div class="article-grid">${program.articles.map((a, i) => articleCard(a, program, i)).join('\n')}</div></section>
     <div class="landing-return"><a class="button button-secondary" href="../">Quay lại trang chủ</a><span>Khám phá các chương trình đào tạo khác của Tuổi Trẻ.</span></div>
   </main>`;
