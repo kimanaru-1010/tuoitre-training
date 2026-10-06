@@ -65,7 +65,7 @@ Khi `site.url` còn trống, nội dung và điều hướng vẫn hoạt độn
 
 ## Ảnh và nhận diện
 
-- 18 thumbnail đã có được giữ nguyên và gắn với đúng URL bài nguồn, kể cả các mục trùng. 41 URL mới dùng chung `assets/images/placeholders/editorial.svg`. Website không fetch metadata khi người đọc truy cập; không có CORS hay backend lấy ảnh.
+- Cả 61 mục đều có ảnh thật từ metadata Open Graph của đúng bài viết/video Tuổi Trẻ Online, lưu thành 59 thumbnail JPEG trong `assets/images/`. 18 ảnh đã có được giữ nguyên; 41 ảnh mới đã được tải và tối ưu. Các mục URL trùng dùng cùng ảnh bài nguồn. Website không fetch metadata khi người đọc truy cập; không có CORS hay backend lấy ảnh.
 - Tiêu đề lấy từ metadata bài viết/video trên Tuổi Trẻ Online lúc biên soạn; 61 mục giữ nguyên URL và thứ tự người dùng cung cấp. Ảnh dùng cho card dẫn tới bài nguồn; nguồn bài viết/video hiển thị ở footer.
 - `site.heroImage` và `program.image` chọn ảnh đã có trong dự án. Có thể thay bằng ảnh được Trung tâm cung cấp.
 - `assets/images/social-preview.png` là ảnh chia sẻ tạm 1200 × 630 bằng chữ và màu thương hiệu. Thay file này hoặc `site.socialImage` khi có ảnh chính thức. Đây là mẫu nhận diện chữ, chưa phải bộ logo chính thức.
