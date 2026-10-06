@@ -36,11 +36,6 @@ export const programs = [
         "thumbnail": "assets/images/sinh-vien-02.jpg"
       },
       {
-        "title": "Hơn 2.000 sinh viên Trường đại học Nguyễn Tất Thành học thực hành tại báo Tuổi Trẻ",
-        "url": "https://tuoitre.vn/hon-2-000-sinh-vien-truong-dai-hoc-nguyen-tat-thanh-hoc-thuc-hanh-tai-bao-tuoi-tre-20251114133554736.htm",
-        "thumbnail": "assets/images/sinh-vien-02.jpg"
-      },
-      {
         "title": "Sinh viên Trường đại học Ngoại ngữ - Tin học TP.HCM học thực hành tại báo Tuổi Trẻ",
         "url": "https://tuoitre.vn/sinh-vien-truong-dai-hoc-ngoai-ngu-tin-hoc-tphcm-hoc-thuc-hanh-tai-bao-tuoi-tre-100260911104826128.htm",
         "thumbnail": "assets/images/sinh-vien-03.jpg"

@@ -39,18 +39,18 @@ node scripts/build.mjs
 node scripts/check.mjs
 ```
 
-`build.mjs` dùng một bộ template chung để tạo đầy đủ HTML cho từng trang. Nội dung, điều hướng và metadata có sẵn ngay trong HTML, kể cả khi tắt JavaScript. Không cần chạy build trên GitHub: hãy push cả các tệp HTML đã xuất. `check.mjs` kiểm tra các trang, đủ 61 mục nội dung, nhãn video, link tab mới và các đường dẫn nội bộ/ảnh dưới subpath; không gọi mạng. Các trường tùy chọn `topicsHeading` và `topics` chứa nội dung trọng tâm, hiển thị trong phần mô tả chương trình.
+`build.mjs` dùng một bộ template chung để tạo đầy đủ HTML cho từng trang. Nội dung, điều hướng và metadata có sẵn ngay trong HTML, kể cả khi tắt JavaScript. Không cần chạy build trên GitHub: hãy push cả các tệp HTML đã xuất. `check.mjs` kiểm tra các trang, đủ 60 mục nội dung, nhãn video, link tab mới và các đường dẫn nội bộ/ảnh dưới subpath; không gọi mạng. Các trường tùy chọn `topicsHeading` và `topics` chứa nội dung trọng tâm, hiển thị trong phần mô tả chương trình.
 
 Danh sách hiện tại gồm:
 
 | Chương trình | Số mục | Bài viết | Video |
 | --- | ---: | ---: | ---: |
-| Đối tượng đào tạo sinh viên các trường đại học, cao đẳng | 37 | 36 | 1 |
+| Đối tượng đào tạo sinh viên các trường đại học, cao đẳng | 36 | 35 | 1 |
 | Làm báo cùng Tuổi Trẻ | 13 | 8 | 5 |
 | Truyền thông trong tuyển sinh và xây dựng thương hiệu | 6 | 5 | 1 |
 | Nâng cao năng lực truyền thông trong thời đại AI | 5 | 4 | 1 |
 
-Tổng cộng **61 mục**, tương ứng **59 URL khác nhau**. Nhóm sinh viên giữ nguyên hai cặp URL trùng theo danh sách nguồn: mục **2 và 3** (Nguyễn Tất Thành), mục **5 và 33** (Hoa Sen). Không tự loại trùng hoặc đổi thứ tự.
+Tổng cộng **60 mục**, tương ứng **59 URL khác nhau**. Bài số 3 của nhóm sinh viên (trùng bài Nguyễn Tất Thành) đã được xóa theo yêu cầu. Nhóm này còn một cặp URL trùng ở mục **4 và 32** (Hoa Sen), được giữ nguyên. Không tự loại trùng hoặc đổi thứ tự các mục khác.
 
 `site.url` (có dấu `/` cuối) và `site.repository` đã được cấu hình cho tài khoản GitHub **`kimanaru-1010`**:
 
@@ -65,8 +65,8 @@ Khi `site.url` còn trống, nội dung và điều hướng vẫn hoạt độn
 
 ## Ảnh và nhận diện
 
-- Cả 61 mục đều có ảnh thật từ metadata Open Graph của đúng bài viết/video Tuổi Trẻ Online, lưu thành 59 thumbnail JPEG trong `assets/images/`. 18 ảnh đã có được giữ nguyên; 41 ảnh mới đã được tải và tối ưu. Các mục URL trùng dùng cùng ảnh bài nguồn. Website không fetch metadata khi người đọc truy cập; không có CORS hay backend lấy ảnh.
-- Tiêu đề lấy từ metadata bài viết/video trên Tuổi Trẻ Online lúc biên soạn; 61 mục giữ nguyên URL và thứ tự người dùng cung cấp. Ảnh dùng cho card dẫn tới bài nguồn; nguồn bài viết/video hiển thị ở footer.
+- Cả 60 mục đều có ảnh thật từ metadata Open Graph của đúng bài viết/video Tuổi Trẻ Online, lưu thành 59 thumbnail JPEG trong `assets/images/`. 18 ảnh đã có được giữ nguyên; 41 ảnh mới đã được tải và tối ưu. Các mục URL trùng dùng cùng ảnh bài nguồn. Website không fetch metadata khi người đọc truy cập; không có CORS hay backend lấy ảnh.
+- Tiêu đề lấy từ metadata bài viết/video trên Tuổi Trẻ Online lúc biên soạn; 60 mục giữ nguyên URL và thứ tự của danh sách hiện tại. Ảnh dùng cho card dẫn tới bài nguồn; nguồn bài viết/video hiển thị ở footer.
 - `site.heroImage` và `program.image` chọn ảnh đã có trong dự án. Có thể thay bằng ảnh được Trung tâm cung cấp.
 - `assets/images/social-preview.png` là ảnh chia sẻ tạm 1200 × 630 bằng chữ và màu thương hiệu. Thay file này hoặc `site.socialImage` khi có ảnh chính thức. Đây là mẫu nhận diện chữ, chưa phải bộ logo chính thức.
 - Ảnh thiếu khi build được thay bằng `assets/images/placeholders/editorial.svg`. Khi ảnh lỗi lúc đọc, JavaScript hiển thị placeholder tại chỗ, giữ nguyên card và đường dẫn.
